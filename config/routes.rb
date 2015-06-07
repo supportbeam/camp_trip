@@ -4,10 +4,10 @@ Rails.application.routes.draw do
   get 'welcome/index'
   
   resources :users
-  resources :sessions
+  resources :sessions, only: [:new, :create, :destroy]
 
   get 'login' => 'sessions#new', :as => :login
-  get 'logout' => 'sessions#destroy', :as => :logout
+  post 'logout' => 'sessions#destroy', :as => :logout
 
 
   # The priority is based upon order of creation: first created -> highest priority.
