@@ -12,6 +12,7 @@
 
     <nav>
       <%= link_to "Home", root_path %> |
+      <%= link_to "Camps", camps_path %> |
       <%= link_to "Users", users_path %> |
       <% if current_user %>
         <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
