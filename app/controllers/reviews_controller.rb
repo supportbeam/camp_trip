@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = @camp.reviews.biuld(review_params)
+    @review = @camp.reviews.build(review_params)
     @review.user = current_user
 
     if @review.save
@@ -23,7 +23,7 @@ class ReviewsController < ApplicationController
 
   private
   def review_params
-    params.review(:review).permit(:comment, :camp_id)
+    params.require(:review).permit(:comment, :camp_id)
   end
 
   def load_camp

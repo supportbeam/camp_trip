@@ -12,6 +12,7 @@ class CampsController < ApplicationController
   def show
     if current_user
       @review = @camp.reviews.build
+    end
   end
 
   # GET /camps/new
