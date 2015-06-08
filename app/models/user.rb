@@ -6,4 +6,7 @@ class User < ActiveRecord::Base
 
   validates :email, uniqueness: true, presence: true
   validates :username, uniqueness: true, presence: true
+
+  has_many :reviews
+  has_many :camps, through: :reviews
 end
