@@ -1,4 +1,9 @@
-<p id="notice"><%= notice %></p>
+<h1><%= @camp.name %> Info</h1>
+
+<div class="info">
+  <p>Location: <%= @camp.address %></p>
+  <p>Description: <%= @camp.description %></p>
+</div>
 
 <%= link_to 'Edit', edit_camp_path(@camp) %> |
 <%= link_to 'Back', camps_path %>
