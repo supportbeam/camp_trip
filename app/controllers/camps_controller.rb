@@ -10,6 +10,8 @@ class CampsController < ApplicationController
   # GET /camps/1
   # GET /camps/1.json
   def show
+    if current_user
+      @review = @camp.reviews.build
   end
 
   # GET /camps/new
