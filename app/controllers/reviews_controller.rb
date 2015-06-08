@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
     @review.user = current_user
 
     if @review.save
-      redirect_to camps_path, notice: 'Review created successfully'
+      redirect_to camp_path(@camp), notice: 'Review created successfully'
     else
       render 'products/show'
     end
