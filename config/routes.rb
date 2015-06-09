@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :camps do
-    resources :reviews, only: [:show, :create, :destroy]
+    resources :reviews
   end
 
   get 'login' => 'sessions#new', :as => :login

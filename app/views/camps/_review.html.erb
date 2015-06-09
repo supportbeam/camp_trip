@@ -6,5 +6,8 @@
       <em>by <%= review.user.username %></em>
       Added on: <%= review.created_at %>
     <% end %>
+    <% if current_user.id == review.user_id %>
+      <%= link_to 'Edit',  edit_camp_review_path(review.camp_id, review.user_id) %>
+    <% end %>
   </p>
 <% end %>
