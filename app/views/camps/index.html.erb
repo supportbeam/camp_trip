@@ -18,13 +18,7 @@
   </thead>
 
   <tbody>
-    <% @camps.each do |camp| %>
-      <tr>
-        <td><%= link_to camp.name, camp %></td>
-        <td><%= camp.full_address %></td>
-        <td><%= camp.description %></td>
-      </tr>
-    <% end %>
+    <%= render @camps %>
   </tbody>
 </table>
 
