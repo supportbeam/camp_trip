@@ -6,6 +6,7 @@ class Camp < ActiveRecord::Base
   has_many :users, through: :reviews
 
   geocoded_by :full_address
+  after_validation :geocode, if: (:address_changed? || :city_changed? || :province_changed?)
 
   def full_address
     "#{address} #{city} #{province}"
