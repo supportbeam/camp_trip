@@ -10,5 +10,8 @@
   <%= @user.username %>
 </p>
 
+<% if current_user && current_user.id == @user.id %>
 <%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Delete my account', @user, method: :delete, data: { confirm: 'Are you sure you want to delete your account?' } %> |
+<% end %>
 <%= link_to 'Back', users_path %>
