@@ -4,7 +4,11 @@ class CampsController < ApplicationController
   # GET /camps
   # GET /camps.json
   def index
-    @camps = Camp.all
+    @camps = if params[:search]
+      Camp.near(params[:search])
+    else
+      Camp.all
+    end
   end
 
   # GET /camps/1
@@ -13,6 +17,7 @@ class CampsController < ApplicationController
     if current_user
       @review = @camp.reviews.build
     end
+    @nearby_camps = @camp.nearbys(30, units: :km)
   end
 
   # GET /camps/new
