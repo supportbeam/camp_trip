@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   before_filter :load_camp
   before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_action :require_login, only: [:edit, :create, :update, :destroy]
 
   def show
   end
