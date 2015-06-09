@@ -5,4 +5,9 @@ class Camp < ActiveRecord::Base
   has_many :reviews
   has_many :users, through: :reviews
 
+  geocoded_by :full_address
+
+  def full_address
+    "#{address} #{city} #{province}"
+  end
 end
