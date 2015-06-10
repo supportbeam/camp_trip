@@ -1,7 +1,7 @@
 <h1><%= @camp.name %> Info</h1>
 
 <div class="info">
-  <p>Location: <%= @camp.address %></p>
+  <p>Location: <%= @camp.full_address %></p>
   <p>Description: <%= @camp.description %></p>
 </div>
 
@@ -19,4 +19,14 @@
 
 <% else %>
     <p>Please <%= link_to "login", new_session_path %> to add a review.</p>
+<% end %>
+
+
+<% if @nearby_camps.any? %>
+  <h2>Nearby Campgrounds within 30km</h2>
+  <ul>
+    <% @nearby_camps.each do |nc| %>
+      <li><%= nc.name %>, <%= nc.distance %> kms</li>
+    <% end %>
+  </ul>
 <% end %>

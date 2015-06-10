@@ -1,20 +1,28 @@
 <h1>Campgrounds</h1>
 
+<section style="clear:both">
+  <button id="current_location">Find Campgrounds within 50km near me</button>
+</section>
+
+<section style="clear:both">
+  <%= form_tag camps_path, method: :get do %>
+    <%= label_tag :search, 'Find campgrounds within 50km nearby:' %>
+    <%= text_field_tag :search, params[:search], placeholder: "Address" %>
+    <%= submit_tag "Search" %>
+  <% end %>
+</section>
+
 <table>
   <thead>
     <tr>
       <th>Name</th>
+      <th>Location</th>
       <th>Description</th>
     </tr>
   </thead>
 
-  <tbody>
-    <% @camps.each do |camp| %>
-      <tr>
-        <td><%= link_to camp.name, camp %></td>
-        <td><%= camp.description %></td>
-      </tr>
-    <% end %>
+  <tbody id="camps">
+    <%= render @camps %>
   </tbody>
 </table>
 

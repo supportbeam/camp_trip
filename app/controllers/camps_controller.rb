@@ -4,7 +4,18 @@ class CampsController < ApplicationController
   # GET /camps
   # GET /camps.json
   def index
-    @camps = Camp.all
+    @camps = if params[:search]
+      Camp.near(params[:search], 50, units: :km)
+    elsif params[:latitude] && params[:longitude]
+      Camp.near([params[:latitude], params[:longitude]], 50, units: :km)
+    else
+      Camp.all
+    end
+
+    respond_to do |format|
+      format.html
+      format.js
+    end 
   end
 
   # GET /camps/1
@@ -13,6 +24,7 @@ class CampsController < ApplicationController
     if current_user
       @review = @camp.reviews.build
     end
+    @nearby_camps = @camp.nearbys(30, units: :km)
   end
 
   # GET /camps/new
@@ -72,6 +84,6 @@ class CampsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def camp_params
-      params.require(:camp).permit(:name, :address, :description)
+      params.require(:camp).permit(:name, :address, :city, :province, :description)
     end
 end
