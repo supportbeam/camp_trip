@@ -1,2 +1,6 @@
 @import "foundation_and_overrides";
 /* Add imports of custom sass/scss files here */
+#map-canvas {
+  height: 500px;
+  width: 700px;
+}
