@@ -5,10 +5,17 @@ class CampsController < ApplicationController
   # GET /camps.json
   def index
     @camps = if params[:search]
-      Camp.near(params[:search])
+      Camp.near(params[:search], 50, units: :km)
+    elsif params[:latitude] && params[:longitude]
+      Camp.near([params[:latitude], params[:longitude]], 50, units: :km)
     else
       Camp.all
     end
+
+    respond_to do |format|
+      format.html
+      format.js
+    end 
   end
 
   # GET /camps/1

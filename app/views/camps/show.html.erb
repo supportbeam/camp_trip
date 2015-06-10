@@ -23,7 +23,7 @@
 
 
 <% if @nearby_camps.any? %>
-  <h2>Nearby Campgrounds</h2>
+  <h2>Nearby Campgrounds within 30km</h2>
   <ul>
     <% @nearby_camps.each do |nc| %>
       <li><%= nc.name %>, <%= nc.distance %> kms</li>
